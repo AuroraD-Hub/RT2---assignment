@@ -1,5 +1,5 @@
 # Gazebo & RViz simulation
-This third assignment consists in a robot simulation based on ROS environment and in c++ language. Gazibo and Rviz environment has been downloaded from [Prof. Carmine Recchiuto's repository](https://github.com/CarmineD8/final_assignment) for Robotics Engineering students of UNIGE.
+This assignment consists in a robot simulation based on ROS environment and in c++ language and Jupyter Notebook. Gazibo and Rviz environment has been downloaded from [Prof. Carmine Recchiuto's repository](https://github.com/CarmineD8/final_assignment) for Robotics Engineering students of UNIGE.
 
 Some parameters has been already set in [slam_gmapping package](https://github.com/CarmineD8/slam_gmapping) needed for this simulation.
 
@@ -24,10 +24,10 @@ roslaunch final_assignment simulation_gmapping.launch
 roslaunch final_assignment move_base.launch
 roslaunch final_assignment interface.launch
 ```
-Gazebo and RViz environment is now available.
+Gazebo and RViz environment is now available. At last, open the Notebook and run it to start the interface.
 
 ## Assignment
-For this assignment a software architecture for the control of the robot is developed. This architecture is defined as an user interface that takes user requests and then execute the corresponding controlling mode. There are three different robot control modalities:
+For this assignment a software architecture for the control of the robot is developed. This architecture is defined as an user interface on Jupyter Notebook that takes user requests and then execute the corresponding controlling mode. There are three different robot control modalities:
 * autonomously reach a position in the environment passed as input by the user
 * the user takes full control of the robot and drives it with the keyboard
 * the user takes control of the robot, but it is assisted to avoid collisions
