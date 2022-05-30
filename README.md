@@ -35,7 +35,7 @@ For this assignment a software architecture for the control of the robot is deve
 This interface is developed as three nodes that subscribes and publish to different topics and it implements different functions for every modality. The 'interface_node' manages directly the user interface, 'callbacks_node' calls every time the callback functions of the subscribers and 'driver_node' control the robot both with respect to the minimum distances from the obstacles and to user inputs in user-controlling modalitites. This nodes communicate with custom service.
 
 Here you can find the corresponding documentation for the controlling nodes and the custom service:
-https://aurorad-hub.github.io/RT1-III_assignment/
+ https://aurorad-hub.github.io/RT2---assignment/
 
 ## Simulation topics used
 ### Reach new goal ###
