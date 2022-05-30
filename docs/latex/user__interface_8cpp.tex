@@ -1,0 +1,141 @@
+\hypertarget{user__interface_8cpp}{}\doxysection{src/user\+\_\+interface.cpp File Reference}
+\label{user__interface_8cpp}\index{src/user\_interface.cpp@{src/user\_interface.cpp}}
+
+
+User interface node for robot control.  
+
+
+{\ttfamily \#include \char`\"{}ros/ros.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}final\+\_\+srv/\+Callbacks\+\_\+srv.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}move\+\_\+base\+\_\+msgs/\+Move\+Base\+Action\+Goal.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}actionlib\+\_\+msgs/\+Goal\+I\+D.\+h\char`\"{}}\newline
+Include dependency graph for user\+\_\+interface.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{user__interface_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{user__interface_8cpp_ae7607264d95ab856b04394f402fa04be}{auto\+\_\+move}} ()
+\item 
+void \mbox{\hyperlink{user__interface_8cpp_acd7d9f9873942e9730e0e49948db1ed3}{drive\+\_\+alone}} ()
+\item 
+void \mbox{\hyperlink{user__interface_8cpp_ada3b4d9a66bb0cf987fda8794d969550}{drive\+\_\+assistance}} ()
+\item 
+void \mbox{\hyperlink{user__interface_8cpp_a7abcbe3582a2f3e2a5012da50db9b617}{ui\+\_\+decide}} ()
+\item 
+int \mbox{\hyperlink{user__interface_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}} (int argc, char $\ast$$\ast$argv)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{user__interface_8cpp_ae057aae7fbba2a4cef62321020305295}\label{user__interface_8cpp_ae057aae7fbba2a4cef62321020305295}} 
+ros\+::\+Publisher \mbox{\hyperlink{user__interface_8cpp_ae057aae7fbba2a4cef62321020305295}{pub\+\_\+goal}}
+\begin{DoxyCompactList}\small\item\em Publisher to /move\+\_\+base/goal topic. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{user__interface_8cpp_a96d80f80cfea8442d70360b35cebb05a}\label{user__interface_8cpp_a96d80f80cfea8442d70360b35cebb05a}} 
+ros\+::\+Publisher \mbox{\hyperlink{user__interface_8cpp_a96d80f80cfea8442d70360b35cebb05a}{pub\+\_\+canc}}
+\begin{DoxyCompactList}\small\item\em Publisher to /move\+\_\+base/cancel topic. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{user__interface_8cpp_a17bcd065930a8a7f9f194078d9977268}\label{user__interface_8cpp_a17bcd065930a8a7f9f194078d9977268}} 
+ros\+::\+Service\+Client \mbox{\hyperlink{user__interface_8cpp_a17bcd065930a8a7f9f194078d9977268}{client}}
+\begin{DoxyCompactList}\small\item\em Client to /service custom service. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{user__interface_8cpp_a35189ff8bd423937096fab144f74e980}\label{user__interface_8cpp_a35189ff8bd423937096fab144f74e980}} 
+final\+\_\+srv\+::\+Callbacks\+\_\+srv \mbox{\hyperlink{user__interface_8cpp_a35189ff8bd423937096fab144f74e980}{var}}
+\begin{DoxyCompactList}\small\item\em Variable used to pass data between nodes with the custom service. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+User interface node for robot control. 
+
+\begin{DoxyAuthor}{Author}
+Aurora Durante 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+04/02/2022
+\end{DoxyDate}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em frame\+\_\+id} & Define position of goal frame \\
+\hline
+\mbox{\texttt{ in}}  & {\em w} & Define porientation of goal frame\\
+\hline
+\end{DoxyParams}
+Publishes to\+: ~\newline
+ °/move\+\_\+base/goal °/move\+\_\+base/cancel Services\+: ~\newline
+ °/service
+
+Description\+: This node allows communication between a user and the robot through a user interface. The user gives input to the robot that succesively executes related commands to move in the environment pf the simulation. 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{user__interface_8cpp_ae7607264d95ab856b04394f402fa04be}\label{user__interface_8cpp_ae7607264d95ab856b04394f402fa04be}} 
+\index{user\_interface.cpp@{user\_interface.cpp}!auto\_move@{auto\_move}}
+\index{auto\_move@{auto\_move}!user\_interface.cpp@{user\_interface.cpp}}
+\doxysubsubsection{\texorpdfstring{auto\_move()}{auto\_move()}}
+{\footnotesize\ttfamily void auto\+\_\+move (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Robot moves autonomously 
+\begin{DoxyParams}{Parameters}
+{\em target} & defines the goal position to reach once the user set its coordinates \\
+\hline
+{\em canc} & defines an empty object to publish to /move\+\_\+base/goal/cancel topic if the goal is unreachable \\
+\hline
+{\em ui\+\_\+canc} & defines the user intention wheter to cancel or not the current goal\\
+\hline
+\end{DoxyParams}
+In this modality the robot moves autonomously in the environment to reach a goal passed as input by the user. The robot is also able to cancel the goal if it is unfeasible or if the user ask it to.\mbox{\Hypertarget{user__interface_8cpp_acd7d9f9873942e9730e0e49948db1ed3}\label{user__interface_8cpp_acd7d9f9873942e9730e0e49948db1ed3}} 
+\index{user\_interface.cpp@{user\_interface.cpp}!drive\_alone@{drive\_alone}}
+\index{drive\_alone@{drive\_alone}!user\_interface.cpp@{user\_interface.cpp}}
+\doxysubsubsection{\texorpdfstring{drive\_alone()}{drive\_alone()}}
+{\footnotesize\ttfamily void drive\+\_\+alone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+User controls the robot 
+\begin{DoxyParams}{Parameters}
+{\em d} & defines the keyboard inputs sent by the user \\
+\hline
+{\em mod2} & defines the control modality to which the robot has to switch\\
+\hline
+\end{DoxyParams}
+In this modality the user is free to entirely control the robot by using the keyboard. He/she can decide to stop controlling the robot by entering \textquotesingle{}q\textquotesingle{}.\mbox{\Hypertarget{user__interface_8cpp_ada3b4d9a66bb0cf987fda8794d969550}\label{user__interface_8cpp_ada3b4d9a66bb0cf987fda8794d969550}} 
+\index{user\_interface.cpp@{user\_interface.cpp}!drive\_assistance@{drive\_assistance}}
+\index{drive\_assistance@{drive\_assistance}!user\_interface.cpp@{user\_interface.cpp}}
+\doxysubsubsection{\texorpdfstring{drive\_assistance()}{drive\_assistance()}}
+{\footnotesize\ttfamily void drive\+\_\+assistance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+User assisted to control the robot 
+\begin{DoxyParams}{Parameters}
+{\em d} & defines the keyboard inputs sent by the user \\
+\hline
+{\em mod1,mod2} & define the control modalities to which the robot has to switch\\
+\hline
+\end{DoxyParams}
+In this modality the user is able to move the robot while is constantly controlled by robot itself that acquires information about the environment to avoid collisions. The user can decide to stop controlling the robot by entering \textquotesingle{}q\textquotesingle{}.\mbox{\Hypertarget{user__interface_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}\label{user__interface_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}} 
+\index{user\_interface.cpp@{user\_interface.cpp}!main@{main}}
+\index{main@{main}!user\_interface.cpp@{user\_interface.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+Main function of the node 
+\begin{DoxyParams}{Parameters}
+{\em argc} & is input of the node \\
+\hline
+{\em argv} & is input of the node\\
+\hline
+\end{DoxyParams}
+In this main function the node is initialized and setted to handle communication with R\+OS system. It also defines the publishers and clients needed for this node and it constantly ask the user inputs about what the robot should do.\mbox{\Hypertarget{user__interface_8cpp_a7abcbe3582a2f3e2a5012da50db9b617}\label{user__interface_8cpp_a7abcbe3582a2f3e2a5012da50db9b617}} 
+\index{user\_interface.cpp@{user\_interface.cpp}!ui\_decide@{ui\_decide}}
+\index{ui\_decide@{ui\_decide}!user\_interface.cpp@{user\_interface.cpp}}
+\doxysubsubsection{\texorpdfstring{ui\_decide()}{ui\_decide()}}
+{\footnotesize\ttfamily void ui\+\_\+decide (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Choose control modality 
+\begin{DoxyParams}{Parameters}
+{\em mod} & defines which modality the user chooses\\
+\hline
+\end{DoxyParams}
+In this function the user can decide which of the available modalities to use\+: 1) autonomously reach a (x,y) coordinate inserted by the user 2) let the user drive the robot with the keyboard 3) let the user drive the robot assisting them to avoid collisions
