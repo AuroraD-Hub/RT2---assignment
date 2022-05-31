@@ -32,8 +32,7 @@ bool callback_srv(final_srv::Callbacks_srv::Request &req, final_srv::Callbacks_s
 */
    	
    	// Information about the status of the goal
-	res.s = req.succ; 
-	res.re = req.rej;
+	res.s = req.stat;
 	
 	// Information about the minimum distances on the right, in front and on the left
 	res.ri = req.right;
