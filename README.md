@@ -24,7 +24,8 @@ roslaunch final_assignment simulation_gmapping.launch
 roslaunch final_assignment move_base.launch
 roslaunch final_assignment interface.launch
 ```
-Gazebo and RViz environment is now available. At last, open the Notebook and run it to start the interface.
+Gazebo and RViz environment is now available.
+Otherwise, just run the first two line and the Notebook to start the interface. By using it, every node run with *interface.launch* is not needed anymore and, thus, no need to execute it.
 
 ## Assignment
 For this assignment a software architecture for the control of the robot is developed. This architecture is defined as an user interface on Jupyter Notebook that takes user requests and then execute the corresponding controlling mode. There are three different robot control modalities:
@@ -36,6 +37,10 @@ This interface is developed as three nodes that subscribes and publish to differ
 
 Here you can find the corresponding documentation for the controlling nodes and the custom service:
  https://aurorad-hub.github.io/RT2---assignment/
+
+## Notebook errors
+The Notebook isn't able to drive the robot by only using *move_base* even if it publishes to `move_base/goal` topic every time the user decide to send a new target by click on the corresponding button widget. This implies that also position of new targets isn't plotted in the *matplotlib widget*.
+Moreover, also plots of robot position and laser scanner data aren't constantly updated.
 
 ## Simulation topics used
 ### Reach new goal ###
