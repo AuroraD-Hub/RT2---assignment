@@ -25,7 +25,7 @@ roslaunch final_assignment move_base.launch
 roslaunch final_assignment interface.launch
 ```
 Gazebo and RViz environment is now available.
-Otherwise, just run the first two line and the Notebook to start the interface. By using it, every node run with *interface.launch* is not needed anymore and, thus, no need to execute it.
+Otherwise, just run the first two lines and the Notebook to start the interface. By using it, every node run with *interface.launch* is not needed anymore and, thus, no need to execute it.
 
 ## Assignment
 For this assignment a software architecture for the control of the robot is developed. This architecture is defined as an user interface on Jupyter Notebook that takes user requests and then execute the corresponding controlling mode. There are three different robot control modalities:
