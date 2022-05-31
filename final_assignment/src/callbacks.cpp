@@ -40,7 +40,7 @@ void callback_scan(const sensor_msgs::LaserScan::ConstPtr& msg){
 * cover respectively [0 60]° (right section), [60 120]° (central section) and  
 * [120 180]° (left section).
 */
-   	
+	  	
    	/* Get information about the environment with /base_scan topic: find the minimum
    	   distances from the edges in the three sections. */
 	var.request.right = msg->ranges[0];
@@ -71,10 +71,11 @@ void callback_status(const actionlib_msgs::GoalStatusArray::ConstPtr& msg){
 * requested target is respectively achieved and unattainable or invalid.
 */
 
-	var.request.succ = msg->status_list[0].status; // SUCCEDED
-	var.request.rej = msg->status_list[0].status; // REJECTED
-	
-	client.call(var);
+	if(!msg->status_list.empty()){
+		var.request.stat = msg->status_list[0].status;
+		
+		client.call(var);
+	}
 }
 
 int main(int argc, char **argv){
@@ -91,8 +92,6 @@ int main(int argc, char **argv){
 	// Initialize the node, setup the NodeHandle for handling the communication with the ROS system
 	ros::init(argc, argv, "callbacks");
 	ros::NodeHandle nh;
-	
-	// Set simulation parameters
 	
 	// Define the publishers, subscribers and clients to needed topics
 	ros::Subscriber sub_scan = nh.subscribe("/scan", 100, callback_scan);
